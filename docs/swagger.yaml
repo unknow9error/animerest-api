@@ -1,0 +1,95 @@
+definitions:
+  models.UserLoginDto:
+    properties:
+      login:
+        type: string
+      password:
+        type: string
+    type: object
+  models.UserRegisterDto:
+    properties:
+      confirmPassword:
+        type: string
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      middleName:
+        type: string
+      password:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /anime/:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: get anime list
+      tags:
+      - AnimeController
+  /anime/title:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: model
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: model
+        in: query
+        name: code
+        type: string
+      - description: model
+        in: query
+        name: t
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: get anime by id
+      tags:
+      - AnimeController
+  /user/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: model
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserLoginDto'
+      produces:
+      - application/json
+      responses: {}
+      summary: login
+      tags:
+      - UserController
+  /user/register:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: model
+        in: body
+        name: model
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserRegisterDto'
+      produces:
+      - application/json
+      responses: {}
+      summary: register
+      tags:
+      - UserController
+swagger: "2.0"
